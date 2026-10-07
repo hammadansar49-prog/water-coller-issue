@@ -28,6 +28,8 @@ button{font:inherit;cursor:pointer;touch-action:manipulation}
 .logo:hover{transform:rotate(-12deg) scale(1.08)}
 h1{font-size:28px;font-weight:700;letter-spacing:-.5px}
 .sub{margin:2px 0 0;font-size:14px;color:#8fb8d6}
+.dev{margin:0 0 2px;font-family:'Pacifico',cursive;font-size:16px;line-height:1.4;background:linear-gradient(90deg,#7fe3ff,#c4b5fd,#fda4af);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 18px rgba(127,227,255,.25);transition:transform .25s ease}
+.dev:hover{transform:rotate(-2deg) scale(1.04)}
 .pill{padding:10px 16px;border-radius:999px;background:rgba(127,227,255,.08);border:1px solid rgba(127,227,255,.2);font-size:14px;transition:background .2s,transform .2s}
 .pill:hover{background:rgba(127,227,255,.16);transform:translateY(-1px)}
 
@@ -120,6 +122,7 @@ h3.red{color:#fecaca}
   .page{padding:20px 16px 32px}
   .wrap{gap:16px}
   h1{font-size:21px}.sub{display:none}
+  .dev{font-size:13px}
   .logo{width:38px;height:38px;border-radius:12px}
   .pill{padding:7px 12px;font-size:12px}
   .panel{padding:16px;border-radius:20px}
