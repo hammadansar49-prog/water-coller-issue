@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04122b">
+<title>Cooler Duty</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fe3ff' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 2.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<div class="page">
+<div class="wrap">
+
+<header class="top fade">
+  <div class="brand">
+    <div class="logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7fe3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg>
+    </div>
+    <div>
+      <h1>Cooler Duty</h1>
+      <p class="sub">Kiski bari hai? Ab koi larai nahi.</p>
+    </div>
+  </div>
+  <div class="pill">Total bhara: <b id="total">0</b> baar</div>
+</header>
+
+<div id="toast" class="toast" hidden>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe3ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  <span id="toastMsg"></span>
+</div>
+
+<section class="panel hero fade">
+  <div class="liq" id="heroLiq">
+    <svg class="wave2" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 V30 H0Z" fill="rgba(56,189,248,.18)"/></svg>
+    <svg class="wave1" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 11 Q50 0 100 11 T200 11 T300 11 T400 11 T500 11 T600 11 T700 11 T800 11 T900 11 T1000 11 T1100 11 T1200 11 V22 H0Z" fill="rgba(56,189,248,.28)"/></svg>
+    <span class="bub" style="left:18%;width:8px;height:8px"></span>
+    <span class="bub" style="left:52%;width:11px;height:11px;animation-delay:.7s"></span>
+    <span class="bub" style="left:83%;width:6px;height:6px;animation-delay:1.4s"></span>
+  </div>
+
+  <div class="hero-text">
+    <span class="tag">Abhi bari hai · Group <span id="curNo">1</span></span>
+    <h2 id="curFirst">…</h2>
+    <p class="rest" id="curRest"></p>
+    <p class="note">Cooler khatam ho to inhi ki zimmedari hai.</p>
+  </div>
+
+  <div class="actions">
+      <button class="cta" id="fillBtn" type="button">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Pani bhar diya
+      </button>
+      <span class="next">Agla: <b id="nextName"></b></span>
+    </div>
+
+  <div class="tank-col">
+    <div class="tank">
+      <div class="cap"></div>
+      <div class="body">
+        <div class="level" id="tankLevel">
+          <svg class="wave2" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 V30 H0Z" fill="rgba(56,189,248,.45)"/></svg>
+          <svg class="wave1" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 11 Q50 0 100 11 T200 11 T300 11 T400 11 T500 11 T600 11 T700 11 T800 11 T900 11 T1000 11 T1100 11 T1200 11 V22 H0Z" fill="#38bdf8"/></svg>
+          <span class="bub" style="left:20%;width:9px;height:9px"></span>
+          <span class="bub" style="left:50%;width:13px;height:13px;animation-delay:.7s"></span>
+          <span class="bub" style="left:75%;width:7px;height:7px;animation-delay:1.4s"></span>
+        </div>
+        <div class="shine"></div>
+        <div class="pct" id="tankPct">20%</div>
+      </div>
+      <div class="tap"></div>
+    </div>
+  </div>
+</section>
+
+<div class="grid">
+  <section class="panel lineup fade">
+    <h3>Line-up</h3>
+    <p class="hint">Apne group ki row mein "Hum ne bhara" dabao, chahe bari kisi aur ki ho.</p>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>#</th><th>Group</th><th class="c-status">Status</th><th class="c-count">Bhara</th><th><span class="sr">Action</span></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="side">
+  <section class="panel skips fade">
+    <h3 class="red">Bhen ke lory</h3>
+    <p class="hint">Jinki bari thi lekin doosra group bhar aaya.</p>
+    <div id="skipList" class="list"></div>
+  </section>
+
+  <section class="panel history fade">
+    <h3>History</h3>
+    <div id="histList" class="list"></div>
+  </section>
+  </div>
+</div>
+
+<p class="foot" id="syncNote"></p>
+</div>
+</div>
+<script type="module" src="app.js?v=2"></script>
+</body>
+</html>

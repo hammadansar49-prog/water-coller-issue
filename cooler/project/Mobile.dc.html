@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cooler Duty – Mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#04122b}
+*{box-sizing:border-box}
+a{color:#7fe3ff}a:hover{color:#c4f4ff}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-140px) scale(1.4);opacity:0}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(77,214,255,.45)}50%{box-shadow:0 0 0 12px rgba(77,214,255,0)}}
+.wave1{animation:wave 2s linear infinite}
+.wave2{animation:wave 3.2s linear infinite reverse}
+.bub{position:absolute;bottom:6px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);animation:rise 2.2s ease-in infinite}
+.cta{animation:glow 2.4s ease-in-out infinite;transition:transform .15s ease}
+.cta:active{transform:scale(.97)}
+.level{transition:height .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes shine{from{background-position:-200% 0}to{background-position:200% 0}}
+.fade{animation:fadeup .5s cubic-bezier(.2,.8,.2,1) both}
+.d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+.panel{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.panel:hover{transform:translateY(-3px);border-color:rgba(127,227,255,.4)!important;box-shadow:0 18px 40px -18px rgba(77,214,255,.35)}
+.row{transition:background .2s ease,box-shadow .2s ease}
+.row:hover{background:rgba(127,227,255,.08)!important;box-shadow:inset 3px 0 0 #4dd6ff}
+.row .badge{transition:transform .2s ease}
+.row:hover .badge{transform:scale(1.12) rotate(-6deg)}
+.row .gname{transition:transform .2s ease,color .2s ease}
+.row:hover .gname{transform:translateX(4px);color:#fff}
+.ghost{transition:background .2s ease,color .2s ease,transform .15s ease,box-shadow .2s ease}
+.ghost:hover{background:#4dd6ff!important;color:#04122b!important;box-shadow:0 6px 18px -6px rgba(77,214,255,.7)}
+.ghost:active{transform:scale(.95)}
+.hitem{transition:transform .2s ease,background .2s ease;border-radius:10px}
+.hitem:hover{transform:translateX(6px);background:rgba(127,227,255,.06)}
+.logo{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.logo:hover{transform:rotate(-12deg) scale(1.08)}
+.pill{transition:background .2s ease,transform .2s ease}
+.pill:hover{background:rgba(127,227,255,.16)!important;transform:translateY(-1px)}
+.tankwrap{transition:transform .3s ease}
+.tankwrap:hover{transform:scale(1.04)}
+.cta{background-image:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%)!important;background-size:200% 100%!important;background-color:#4dd6ff}
+.cta:hover{animation:glow 2.4s ease-in-out infinite,shine 1s linear infinite}
+.hero{position:relative;overflow:hidden}
+.hero > *:not(.liq){position:relative;z-index:1}
+.liq{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(56,189,248,.28),rgba(11,90,168,.45));transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.skip{position:relative;overflow:hidden;border-radius:14px;border:1px solid rgba(248,113,113,.35);background:rgba(60,8,20,.35);transition:transform .2s ease,border-color .2s ease}
+.skip:hover{transform:translateX(4px);border-color:rgba(248,113,113,.7)}
+.skip > *:not(.rliq){position:relative;z-index:1}
+.rliq{position:absolute;left:0;right:0;bottom:0;height:55%;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(239,68,68,.35),rgba(153,27,27,.6))}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; overflow-x: hidden; overflow-y: auto; padding: 20px 16px 32px; font-family: 'DM Sans', sans-serif; color: #e6f6ff; background: radial-gradient(500px 360px at 20% -5%, #0e3f78 0%, #04122b 65%); display: flex; flex-direction: column; gap: 16px;">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-shrink: 0;">
+<div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+<div class="logo" style="width: 38px; height: 38px; flex-shrink: 0; border-radius: 12px; background: rgba(77,214,255,.12); border: 1px solid rgba(77,214,255,.3); display: flex; align-items: center; justify-content: center;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7fe3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"></path><path d="M9 14.5a3 3 0 0 0 3 3"></path></svg>
+</div>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 700;">Cooler Duty</h1>
+</div>
+<span class="pill" style="flex-shrink: 0; padding: 7px 12px; border-radius: 999px; background: rgba(127,227,255,.08); border: 1px solid rgba(127,227,255,.2); font-size: 12px;"><b>{{totalFills}}</b> fills</span>
+</header>
+
+<section class="panel fade hero" style="flex-shrink: 0; padding: 20px; border-radius: 24px; background: linear-gradient(160deg, #0b2d58, #061a38); border: 1px solid rgba(127,227,255,.18); display: flex; flex-direction: column; gap: 16px;">
+<div class="liq" style="height: {{heroLevel}};">
+<svg class="wave2" style="position: absolute; top: -16px; left: 0; width: 200%; height: 18px;" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 V30 H0Z" fill="rgba(56,189,248,.18)"></path></svg>
+<svg class="wave1" style="position: absolute; top: -11px; left: 0; width: 200%; height: 12px;" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 11 Q50 0 100 11 T200 11 T300 11 T400 11 T500 11 T600 11 T700 11 T800 11 T900 11 T1000 11 T1100 11 T1200 11 V22 H0Z" fill="rgba(56,189,248,.28)"></path></svg>
+<span class="bub" style="left: 18%; width: 8px; height: 8px;"></span>
+<span class="bub" style="left: 52%; width: 11px; height: 11px; animation-delay: .7s;"></span>
+<span class="bub" style="left: 83%; width: 6px; height: 6px; animation-delay: 1.4s;"></span>
+</div>
+
+<div style="display: flex; gap: 14px; align-items: flex-start;">
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<span style="align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: rgba(77,214,255,.14); color: #7fe3ff; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;">Abhi bari · Group {{current.no}}</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 1.05; font-weight: 700; letter-spacing: -0.8px; overflow-wrap: anywhere;">{{current.first}}</h2>
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px; line-height: 1.25; font-weight: 500; color: #7fe3ff; overflow-wrap: anywhere;">{{current.rest}}</p>
+</div>
+<div style="flex-shrink: 0; position: relative; overflow: hidden; width: 74px; height: 110px; border-radius: 16px 16px 20px 20px; background: rgba(4,18,43,.7); border: 2px solid rgba(127,227,255,.35);">
+<div class="level" style="position: absolute; left: 0; right: 0; bottom: 0; height: {{levelPct}}; background: linear-gradient(180deg, #38bdf8, #0b5aa8);">
+<svg class="wave2" style="position: absolute; top: -9px; left: 0; width: 200%; height: 10px;" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 V30 H0Z" fill="rgba(56,189,248,.45)"></path></svg>
+<svg class="wave1" style="position: absolute; top: -6px; left: 0; width: 200%; height: 7px;" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 11 Q50 0 100 11 T200 11 T300 11 T400 11 T500 11 T600 11 T700 11 T800 11 T900 11 T1000 11 T1100 11 T1200 11 V22 H0Z" fill="#38bdf8"></path></svg>
+<span class="bub" style="left: 25%; width: 6px; height: 6px;"></span>
+<span class="bub" style="left: 60%; width: 8px; height: 8px; animation-delay: .8s;"></span>
+</div>
+</div>
+</div>
+
+<sc-if value="{{justFilled}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 10px 12px; border-radius: 12px; background: rgba(77,214,255,.1); border: 1px solid rgba(77,214,255,.4); font-size: 13px; line-height: 1.4;">{{msg}}</div>
+</sc-if>
+
+<button class="cta" onClick="{{markFilled}}" style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 56px; border: 0; border-radius: 16px; color: #04122b; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+Pani bhar diya
+</button>
+<span style="font-size: 13px; color: #b9d8ee; text-align: center;">Agla: <b style="color: #e6f6ff;">{{next.name}}</b></span>
+</section>
+
+<section class="panel fade" style="flex-shrink: 0; padding: 16px; border-radius: 20px; background: rgba(10,40,80,.5); border: 1px solid rgba(127,227,255,.14); display: flex; flex-direction: column; gap: 10px;">
+<div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 16px;">Line-up</h3>
+<p style="margin: 3px 0 0; font-size: 12px; color: #8fb8d6;">Apne group par "Hum ne bhara" dabao, chahe bari kisi aur ki ho.</p>
+</div>
+<sc-for list="{{pairs}}" as="p" hint-placeholder-count="4">
+<div class="row" style="display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 12px; border-radius: 14px; border: 1px solid {{p.border}}; background: {{p.bg}};">
+<span class="badge" style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; background: {{p.badgeBg}}; color: {{p.badgeFg}};">{{p.no}}</span>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+<span style="font-size: 14px; font-weight: 500; line-height: 1.3;">{{p.name}}</span>
+<span style="font-size: 11px; color: #8fb8d6;"><b style="color: {{p.tagColor}};">{{p.tag}}</b> · {{p.count}} baar</span>
+</div>
+<button class="ghost" onClick="{{p.fill}}" style="flex-shrink: 0; min-height: 40px; padding: 0 10px; border-radius: 10px; background: transparent; color: #7fe3ff; border: 1px solid rgba(127,227,255,.3); font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap;">{{p.btn}}</button>
+</div>
+</sc-for>
+</section>
+
+<section class="panel fade" style="flex-shrink: 0; padding: 16px; border-radius: 20px; background: rgba(10,40,80,.5); border: 1px solid rgba(248,113,113,.22); display: flex; flex-direction: column; gap: 10px;">
+<div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 16px; color: #fecaca;">Bhen ke lory</h3>
+<p style="margin: 4px 0 0; font-size: 13px; color: #8fb8d6;">Jinki bari thi lekin doosra group bhar aaya.</p>
+</div>
+<sc-if value="{{noSkips}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 13px; color: #8fb8d6;">Abhi tak sab ne apni bari nibhayi.</p>
+</sc-if>
+<sc-for list="{{skips}}" as="k" hint-placeholder-count="2">
+<div class="skip" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;">
+<div class="rliq">
+<svg class="wave2" style="position: absolute; top: -9px; left: 0; width: 200%; height: 10px;" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 V30 H0Z" fill="rgba(239,68,68,.25)"></path></svg>
+<svg class="wave1" style="position: absolute; top: -6px; left: 0; width: 200%; height: 7px;" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 11 Q50 0 100 11 T200 11 T300 11 T400 11 T500 11 T600 11 T700 11 T800 11 T900 11 T1000 11 T1100 11 T1200 11 V22 H0Z" fill="rgba(239,68,68,.35)"></path></svg>
+<span class="bub" style="left: 70%; width: 6px; height: 6px;"></span>
+</div>
+<span style="font-size: 14px; font-weight: 700; color: #fee2e2; overflow-wrap: anywhere;">{{k.name}}</span>
+<span style="font-size: 12px; color: #fecaca;">Nahi gaye · {{k.by}} ne bhara</span>
+<span style="font-size: 11px; color: #fca5a5;">{{k.time}}</span>
+</div>
+</sc-for>
+</section>
+
+<section class="panel fade" style="flex-shrink: 0; padding: 16px; border-radius: 20px; background: rgba(10,40,80,.5); border: 1px solid rgba(127,227,255,.14); display: flex; flex-direction: column; gap: 4px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 16px;">History</h3>
+</div>
+<sc-if value="{{noHistory}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 4px 0 0; font-size: 13px; color: #8fb8d6;">Abhi tak koi entry nahi.</p>
+</sc-if>
+<sc-for list="{{history}}" as="h" hint-placeholder-count="3">
+<div class="hitem" style="display: flex; flex-direction: column; gap: 2px; padding: 8px 6px; border-bottom: 1px solid rgba(127,227,255,.08);">
+<span style="font-size: 13px; overflow-wrap: anywhere;">{{h.name}}</span>
+<span style="font-size: 11px; color: #8fb8d6;">{{h.time}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+var GROUPS = [['Hammad','Arshad'],['Sarib','Taha'],['Ali Hussain','Ahtsham'],['Abdullah','Ismail','Rohail']];
+var KEY = 'cooler-duty-v2';
+function fresh() { return { queue: [0,1,2,3], skips: [], history: [], counts: [0,0,0,0], justFilled: false, level: 20, msg: '' }; }
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    var s = null;
+    try { s = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    this.state = s || fresh();
+    this.state.justFilled = false;
+    this.state.level = 20;
+  }
+  save(st) { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  fill(g) {
+    var st = this.state, self = this;
+    var d = new Date();
+    var t = d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }) + ', ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    var early = st.queue[0] !== g;
+    // jo group gaya woh line ke end mein; jo nahi gaya woh aage hi rehta hai
+    var queue = st.queue.filter(function (x) { return x !== g; }).concat([g]);
+    var counts = st.counts.slice(); counts[g]++;
+    var name = GROUPS[g].join(' + ');
+    var skips = st.skips || [];
+    if (early) skips = [{ name: GROUPS[st.queue[0]].join(' + '), by: name, time: t }].concat(skips).slice(0, 30);
+    var ns = { queue: queue, skips: skips, counts: counts, history: [{ name: name + (early ? ' (bari se pehle)' : ''), time: t }].concat(st.history).slice(0, 50), justFilled: true, level: 95,
+      msg: early ? name + ' ne pehle bhar diya. Ab bari ' + GROUPS[queue[0]].join(' + ') + ' ki.' : 'Shabash! ' + name + ' ne bhar diya · ' + t };
+    self.setState(ns); self.save(ns);
+    clearTimeout(this.t);
+    clearTimeout(this.t2);
+    this.t2 = setTimeout(function () { self.setState({ level: 20 }); }, 700);
+    this.t = setTimeout(function () { self.setState({ justFilled: false }); }, 3600);
+  }
+  componentWillUnmount() { clearTimeout(this.t); clearTimeout(this.t2); }
+  renderVals() {
+    var st = this.state, self = this;
+    var cur = st.queue[0], nxt = st.queue[1];
+    var groups = st.queue.map(function (i, pos) {
+      var on = pos === 0;
+      return { no: i + 1, name: GROUPS[i].join(' + '), count: st.counts[i],
+        tag: on ? 'Abhi' : (pos === 1 ? 'Agla' : 'Wait'),
+        tagColor: on ? '#4dd6ff' : (pos === 1 ? '#b9d8ee' : '#8fb8d6'),
+        btn: 'Hum ne bhara',
+        fill: function () { self.fill(i); },
+        bg: on ? 'rgba(77,214,255,.1)' : 'rgba(4,18,43,.35)',
+        border: on ? 'rgba(77,214,255,.6)' : 'rgba(127,227,255,.12)',
+        badgeBg: on ? '#4dd6ff' : 'rgba(127,227,255,.1)',
+        badgeFg: on ? '#04122b' : '#b9d8ee' };
+    });
+    return {
+      current: { no: cur + 1, first: GROUPS[cur][0], rest: '+ ' + GROUPS[cur].slice(1).join(' + ') },
+      next: { name: GROUPS[nxt].join(' + ') },
+      pairs: groups,
+      skips: (st.skips || []).slice(0, 5),
+      noSkips: !(st.skips || []).length,
+      history: st.history.slice(0, 5),
+      noHistory: st.history.length === 0,
+      totalFills: st.history.length,
+      levelPct: st.level + '%',
+      heroLevel: (st.level > 50 ? 55 : 18) + '%',
+      justFilled: st.justFilled,
+      msg: st.msg,
+      markFilled: function () { self.fill(cur); },
+      reset: function () { var ns = fresh(); self.setState(ns); self.save(ns); }
+    };
+  }
+}
+</script>
+</body>
+</html>

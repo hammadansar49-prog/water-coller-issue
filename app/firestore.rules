@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Sirf ek document: cooler/state. Koi bhi parh/likh sakta hai, delete nahi kar sakta.
+    match /cooler/state {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['queue', 'counts', 'history', 'skips'])
+        && request.resource.data.queue.size() == 4;
+      allow delete: if false;
+    }
+  }
+}
