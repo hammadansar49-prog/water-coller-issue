@@ -6,8 +6,19 @@ const fresh = () => ({ queue: [0, 1, 2, 3], counts: [0, 0, 0, 0], history: [], s
 const gname = (i) => GROUPS[i].join(' + ');
 const $ = (id) => document.getElementById(id);
 
+// Ek entry ke baad 24 ghante tak nayi entry nahi.
+const LOCK_MS = 24 * 60 * 60 * 1000;
+const unlockAt = (st) => ((st.history && st.history[0] && st.history[0].at) || 0) + LOCK_MS;
+function lockMsg(st) {
+  const left = unlockAt(st) - Date.now();
+  const h = Math.floor(left / 3600000), m = Math.ceil((left % 3600000) / 60000);
+  const at = new Date(unlockAt(st)).toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true });
+  return `Abhi 24 ghante nahi hue. Agli entry ${at} ke baad ho sakegi (${h}h ${m}m baqi).`;
+}
+
 // Pure state change: jo group gaya woh line ke end mein, jiski bari thi woh aage hi rehta hai.
 function applyFill(st, g) {
+  if (Date.now() < unlockAt(st)) return { next: null, msg: lockMsg(st) };
   const d = new Date();
   const time = d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }) + ', ' +
     d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
@@ -42,7 +53,7 @@ if (firebaseConfig.apiKey) {
         const snap = await tx.get(ref);
         const r = applyFill(snap.exists() ? snap.data() : fresh(), g);
         msg = r.msg;
-        tx.set(ref, r.next);
+        if (r.next) tx.set(ref, r.next);
       });
       return msg;
     }
@@ -55,6 +66,7 @@ if (firebaseConfig.apiKey) {
     subscribe(f) { cb = f; f(read()); },
     async fill(g) {
       const r = applyFill(read(), g);
+      if (!r.next) return r.msg;
       try { localStorage.setItem(LOCAL_KEY, JSON.stringify(r.next)); } catch {}
       cb(r.next);
       return r.msg;
@@ -74,6 +86,7 @@ function render() {
   $('curRest').textContent = '+ ' + GROUPS[cur].slice(1).join(' + ');
   $('nextName').textContent = gname(state.queue[1]);
   $('total').textContent = state.history.length;
+  document.body.classList.toggle('locked', Date.now() < unlockAt(state));
 
   $('rows').innerHTML = state.queue.map((i, pos) => {
     const tag = pos === 0 ? 'Abhi' : pos === 1 ? 'Agla' : 'Wait';
@@ -112,6 +125,13 @@ function splash(msg) {
   tToast = setTimeout(() => { $('toast').hidden = true; }, 3600);
 }
 
+function notify(msg) {
+  $('toastMsg').textContent = msg; $('toast').hidden = false;
+  clearTimeout(tToast);
+  tToast = setTimeout(() => { $('toast').hidden = true; }, 5000);
+  $('toast').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 function ask(g) {
   const d = $('ask');
   $('askName').textContent = gname(g);
@@ -128,6 +148,7 @@ function ask(g) {
 let busy = false;
 async function fill(g) {
   if (busy) return;
+  if (Date.now() < unlockAt(state)) { notify(lockMsg(state)); return; }
   if (!(await ask(g))) return;
   busy = true; $('fillBtn').disabled = true;
   try { splash(await store.fill(g)); }
@@ -143,4 +164,5 @@ $('rows').addEventListener('click', (e) => {
 
 $('syncNote').textContent = store.mode === 'shared' ? 'Live sync on · sab ko same data dikhta hai' : 'Local mode · data sirf is browser mein hai';
 render();
+setInterval(render, 60000);
 store.subscribe((s) => { state = { ...fresh(), ...s }; render(); });

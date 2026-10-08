@@ -185,3 +185,4 @@ h3.red{color:#fecaca}
 .ask-no{border-radius:18px;border:1px solid rgba(127,227,255,.3);background:transparent;color:#e6f6ff;font-weight:700;transition:background .2s}
 .ask-no:hover{background:rgba(127,227,255,.1)}
 .ask-yes{padding:0 16px;animation:none}
+.locked .cta,.locked .ghost{opacity:.45;animation:none;filter:grayscale(.5)}
