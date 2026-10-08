@@ -112,9 +112,23 @@ function splash(msg) {
   tToast = setTimeout(() => { $('toast').hidden = true; }, 3600);
 }
 
+function ask(g) {
+  const d = $('ask');
+  $('askName').textContent = gname(g);
+  return new Promise((res) => {
+    const done = (v) => { d.onclose = null; if (d.open) d.close(); res(v); };
+    $('askYes').onclick = () => done(true);
+    $('askNo').onclick = () => done(false);
+    d.onclose = () => done(false);
+    d.showModal();
+    $('askNo').focus();
+  });
+}
+
 let busy = false;
 async function fill(g) {
   if (busy) return;
+  if (!(await ask(g))) return;
   busy = true; $('fillBtn').disabled = true;
   try { splash(await store.fill(g)); }
   catch (err) { console.error('Save failed', err); splash('Save nahi ho saka. Dobara try karo.'); }

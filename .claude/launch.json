@@ -4,7 +4,7 @@
     {
       "name": "cooler-app",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5173", "-d", "app"],
+      "runtimeArgs": [".claude/serve.py", "app"],
       "port": 5173
     }
   ]

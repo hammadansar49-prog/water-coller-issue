@@ -171,3 +171,17 @@ h3.red{color:#fecaca}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
 }
+
+/* confirm dialog */
+.ask{width:min(400px,calc(100% - 32px));padding:28px;border-radius:24px;border:1px solid rgba(127,227,255,.25);background:linear-gradient(160deg,#0c2d5a,#061833);color:#e6f6ff;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.ask[open]{animation:fadeup .3s cubic-bezier(.2,.8,.2,1) both}
+.ask::backdrop{background:rgba(2,10,25,.7);backdrop-filter:blur(4px)}
+.ask-ic{width:60px;height:60px;margin:0 auto 14px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(77,214,255,.12);border:1px solid rgba(77,214,255,.3);animation:float 2.4s ease-in-out infinite}
+.ask h3{font-size:22px}
+.ask p{margin:8px 0 22px;color:#8fb8d6;font-size:15px;line-height:1.5}
+.ask p b{color:#7fe3ff}
+.ask-btns{display:flex;gap:12px}
+.ask-btns button{flex:1;justify-content:center;min-height:52px;font-size:16px}
+.ask-no{border-radius:18px;border:1px solid rgba(127,227,255,.3);background:transparent;color:#e6f6ff;font-weight:700;transition:background .2s}
+.ask-no:hover{background:rgba(127,227,255,.1)}
+.ask-yes{padding:0 16px;animation:none}
